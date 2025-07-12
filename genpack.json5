@@ -1,0 +1,43 @@
+{
+    packages: [
+        "genpack/paravirt",
+        "net-analyzer/suricata",
+        "net-analyzer/zabbix",
+        "net-fs/samba",
+        "net-dns/avahi",
+        "app-admin/ulogd",
+        "net-analyzer/wireshark",
+        "net-analyzer/ngrep",
+        "net-analyzer/ntopng",
+        "net-analyzer/nmap",
+        "net-misc/iperf",
+        "net-analyzer/traceroute",
+        "net-analyzer/netcat",
+        "net-analyzer/iftop",
+        "net-analyzer/bmon",
+        "net-misc/whois",
+        "net-dns/bind-tools",
+
+        "net-analyzer/softflowd",
+        "net-analyzer/nfdump",
+        "net-analyzer/argus"
+    ],
+    accept_keywords: {
+        "net-analyzer/suricata": null,
+        "net-libs/libhtp": null,
+        "net-analyzer/ntopng": null,
+        "net-libs/nDPI": null, // for ntopng
+        "net-analyzer/softflowd": null,
+    },
+    use: {
+        "*/*": "python_targets_python3_12 -python_targets_python3_13 python_single_target_python3_12 -python_single_target_python3_13",
+        "net-analyzer/zabbix": "-postgres",
+        "net-analyzer/wireshark": "-gui http2 http3 brotli smi libxml2 lua lz4 sshdump opus wifi lua_single_target_lua5-4",
+        "sys-libs/zlib": "minizip", // for wireshark
+        "net-analyzer/nmap": "libssh2 ncat ndiff nping",
+    },
+    mask: [
+        ">=dev-lang/python-3.13"
+    ],
+    services: ["suricata"]
+}
