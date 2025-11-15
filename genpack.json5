@@ -1,6 +1,6 @@
 {
+    profile: "paravirt",
     packages: [
-        "genpack/paravirt",
         "net-analyzer/suricata",
         "net-analyzer/zabbix",
         "net-fs/samba",
@@ -31,10 +31,15 @@
     },
     use: {
         "*/*": "python_targets_python3_12 -python_targets_python3_13 python_single_target_python3_12 -python_single_target_python3_13",
-        "net-analyzer/zabbix": "-postgres",
+        "net-analyzer/zabbix": "sqlite agent proxy curl snmp -postgres",
+        "net-analyzer/fping": "suid",
         "net-analyzer/wireshark": "-gui http2 http3 brotli smi libxml2 lua lz4 sshdump opus wifi lua_single_target_lua5-4",
         "sys-libs/zlib": "minizip", // for wireshark
         "net-analyzer/nmap": "libssh2 ncat ndiff nping",
+        "dev-libs/jemalloc": "stats",
+    },
+    license: {
+        "net-analyzer/fping": "fping",
     },
     mask: [
         ">=dev-lang/python-3.13"
