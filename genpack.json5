@@ -7,6 +7,7 @@
         "net-dns/avahi",
         "app-admin/ulogd",
         "net-analyzer/wireshark",
+        "net-analyzer/scapy",
         "net-analyzer/ngrep",
         "net-analyzer/ntopng",
         "net-analyzer/nmap",
